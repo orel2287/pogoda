@@ -1,8 +1,11 @@
 name: Docker
 
 on:
+  schedule:
+    - cron: '44 21 * * *'
   push:
     branches: [latest]
+    tags: [ 'latest' ]
   pull_request:
     branches: [latest]
   release:
@@ -10,6 +13,7 @@ on:
 
 jobs:
   latest:
+     
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
