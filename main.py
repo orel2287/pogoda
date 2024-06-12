@@ -10,7 +10,19 @@ def get_weather(city):
     url = BASE_URL.format(city=city)
     response = requests.get(url)
     data = response.json()
-    return data
+
+    # Форматируем данные для вывода
+    weather_info = {
+        'city': city,
+        'temperature': round(data['main']['temp'] - 273.15, 2),  # Перевод в Цельсий
+        'description': data['weather'][0]['description'],
+        'humidity': data['main']['humidity'],
+        'pressure': data['main']['pressure'],
+        'wind_speed': data['wind']['speed'],
+        'icon': f"http://openweathermap.org/img/wn/{data['weather'][0]['icon']}@2x.png"
+    }
+
+    return weather_info
 
 @app.route('/weather/<city>')
 def weather(city):
