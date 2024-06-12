@@ -1,8 +1,6 @@
 name: Docker
 
 on:
-  schedule:
-    - cron: '44 21 * * *'
   push:
     branches: [latest]
     tags: [ 'latest' ]
