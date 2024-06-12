@@ -1,0 +1,21 @@
+services:
+  app:
+    image: orel2287/pogoda
+    container_name: pogodaapp-container
+    command: python main.py
+
+  nginx:
+    image: nginx
+    container_name: nginx-container
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+
+  watchtower:
+    image: containous/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: -- interval 60 weatherapp-container nginx-container
