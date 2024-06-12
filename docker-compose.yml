@@ -10,12 +10,13 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx.conf:/etc/nginx.conf
     depends_on:
       - app
 
   watchtower:
-    image: containous/watchtower
+    image: containrrr/watchtower
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: -- interval 60 weatherapp-container nginx-container
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: --interval 30 pogodaapp-container nginx-container
+
