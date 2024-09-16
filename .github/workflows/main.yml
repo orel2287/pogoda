@@ -1,7 +1,7 @@
 name: Docker
 on:
  release:
-   branches: ['main']
+   branches: ['latest']
 
 jobs:
   build:
