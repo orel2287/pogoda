@@ -21,7 +21,7 @@ jobs:
        id: meta
        uses: docker/metadata-action@v4
        with:
-         images: orel2287/pogoda1
+         images: orel2287/pogoda
          tags: |
              type=schedule
              type=ref, event=pr
